@@ -1,3 +1,3 @@
-/Users/albertodugo/CLionProjects/ArraysStringhe/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/albertodugo/CLionProjects/ArraysStringhe/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/albertodugo/CLionProjects/ArraysStringhe/cmake-build-debug/CMakeFiles/ArraysStringhe.dir
+/Users/albertodugo/CLionProjects/LEZIONE 4/ArraysStringhe/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/albertodugo/CLionProjects/LEZIONE 4/ArraysStringhe/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/albertodugo/CLionProjects/LEZIONE 4/ArraysStringhe/cmake-build-debug/CMakeFiles/ArraysStringhe.dir

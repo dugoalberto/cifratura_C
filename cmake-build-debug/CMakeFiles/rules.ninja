@@ -42,7 +42,7 @@ rule C_EXECUTABLE_LINKER__ArraysStringhe_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/albertodugo/CLionProjects/ArraysStringhe -B/Users/albertodugo/CLionProjects/ArraysStringhe/cmake-build-debug
+  command = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S"/Users/albertodugo/CLionProjects/LEZIONE 4/ArraysStringhe" -B"/Users/albertodugo/CLionProjects/LEZIONE 4/ArraysStringhe/cmake-build-debug"
   description = Re-running CMake...
   generator = 1
 

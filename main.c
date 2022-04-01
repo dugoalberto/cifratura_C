@@ -1,4 +1,5 @@
 #include <stdio.h>
+//TODO GESTIRE CHIAVE NEGATIVA
 void cifratura(char s[], int lunghezza, int k);
 void decifratura(char s[], int lunghezza, int k);
 int calcolaSalti(int totale, int salti){
@@ -26,53 +27,84 @@ void printMenu(){
            "\n\n"
            "numero : ");
 }
+
+//TODO GESTIRE LA SEQUENZA : -> SCELTA CHIAVE, CIFRATURA, SCELTA CHIAVE, devo dover prima fare la decifratura
 void gestisciMenu(int* scelta){
     printMenu();
+    int controlloDoppiaScelta  = *scelta;
     scanf("%d", scelta);
+    while (*scelta == controlloDoppiaScelta && (controlloDoppiaScelta == 2 || controlloDoppiaScelta == 3)){
+        printf("hai scelto nuovamente lo stesso numero, devi cambiare!!\n");
+        printf(" scegli : ");
+        scanf("%d", scelta);
+    }
 }
 
 int main() {
+    /*prove :
     //char s[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     //char s[] = {"abcdefghijklmnopqrstuvwxyz"};
     //char s[] = {"0123456789"};
-    char s[] = {"C14O,, a 7utt1!!!"};
+    //con lo scanf la gestione di spazi e tab deve ancora essere affrontata
+    //prinf("inserisci la lunghezza della parola: ");
+    //int lunghezza_parola = 0;
+    scanf("%d", &lunghezza_parola);
+    char s[lunghezza_parola];
+    scanf("%d", &s); */
+    char s[] = {"HELL0 W0RLD!!"};
+   /* printf("inserisci la lunghezza della parola: ");
+    int lunghezza_parola = 0;
+    scanf("%d", &lunghezza_parola);
+    char s[lunghezza_parola];
+    printf("\n inserisci la parola ");
+    scanf("%s", s);*/
+
     int lunghezza = sizeof s / sizeof s[0] - 1 ; //lunghezza array
     int k = 0; //chiave di cifratura
     int scelta = 0;
-    while (scelta <= 0 || scelta >= 5) {
-        printMenu();
-        scanf("\n%d", &scelta);
-        printf("\n la tua scelta = %d \n", scelta);
+    printMenu();
+    scanf("\n%d", &scelta);
+    printf("\n la tua scelta = %d \n", scelta);
+//poteva essere utilizzato lo switch
+    while (scelta > 0) {
         if (scelta == 1) {
-            while (k <= 0) {
+            do {
                 printf("\ninserisci una chiava maggiore di 0 ---> ");
                 scanf("%d", &k);
-            }
+            } while (k <= 0);
             printf("\n");
             gestisciMenu(&scelta);
         }
-        //TODO GESTIRE CHE PRIMA DI CIFRARE DEVE ESSERE STATA SCELTA UNA CHIAVE
-        if (scelta == 2) {
+        //SCELTA 2
+        if (scelta == 2 && k != 0) {
             cifratura(s, lunghezza, k);
             for (int i = 0; i < lunghezza; ++i) {
-                printf(" %c ", s[i]);
+                printf("%c", s[i]);
             }
             printf("\n");
             gestisciMenu(&scelta);
+        } else if (k == 0 && scelta == 2) {
+            printf("PRIMA DI POTER CIFRARE DEVI SCEGLIRE CON CHE CHIAVE CIFRARE!!\n");
+            gestisciMenu(&scelta);
         }
+        //SCELTA 3
         if (scelta == 3) {
             decifratura(s, lunghezza, k);
             for (int i = 0; i < lunghezza; ++i) {
-                printf(" %c ", s[i]);
+                printf("%c", s[i]);
             }
             printf("\n");
             gestisciMenu(&scelta);
         }
+        //SCELTA 4
         if (scelta == 4) {
             printf(" sei uscito dal menù, se vuoi ritornare, re-run");
             return 0;
         }
-        printf("SCEGLI UN NUMERO TRA 1 E 4!!\n");
+        if (scelta <= 0 || scelta >= 5) {
+            printf("SCEGLI UN NUMERO TRA 1 E 4!!\n");
+            gestisciMenu(&scelta);
+        }
     }
     return 0;
 }
